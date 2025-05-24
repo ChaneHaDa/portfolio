@@ -1,0 +1,259 @@
+/* 기본 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
+    --text-color: #2c3e50;
+    --light-gray: #f8f9fa;
+    --border-color: #e9ecef;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-gray);
+    padding: 2rem 0;
+}
+
+.resume {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 25mm;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    min-height: 297mm;
+}
+
+/* 페이지 구분을 위한 스타일 */
+.page-break {
+    page-break-after: always;
+    break-after: page;
+    margin: 0;
+    padding: 0;
+    height: 0;
+    border: none;
+}
+
+/* 새 페이지 시작 시 여백 조정 */
+.page-break + section {
+    margin-top: 2rem;
+}
+
+/* 헤더 스타일 */
+header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 3px solid var(--accent-color);
+    position: relative;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--accent-color);
+}
+
+h1 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    letter-spacing: -1px;
+    font-weight: 700;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+}
+
+.contact-info p:hover {
+    color: var(--accent-color);
+}
+
+/* 섹션 스타일 */
+section {
+    margin-bottom: 2.5rem;
+    padding: 0 1rem;
+    position: relative;
+}
+
+h2 {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-color);
+    transform: scaleX(0.3);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+section:hover h2::after {
+    transform: scaleX(1);
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.3px;
+    font-weight: 500;
+}
+
+/* 경력사항 스타일 */
+.job {
+    margin-bottom: 2rem;
+    padding-left: 1.2rem;
+    border-left: 3px solid var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+.job:hover {
+    transform: translateX(5px);
+}
+
+.company {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+.period {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+    opacity: 0.8;
+}
+
+/* 리스트 스타일 */
+ul {
+    list-style-position: outside;
+    margin-left: 1.2rem;
+}
+
+li {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    position: relative;
+    padding-left: 0.5rem;
+}
+
+li::marker {
+    color: var(--accent-color);
+}
+
+/* PDF 출력 버튼 스타일 */
+#printButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 24px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+
+#printButton:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(52, 152, 219, 0.3);
+}
+
+/* PDF 출력 시 스타일 */
+@media print {
+    body {
+        background: none;
+        padding: 0;
+    }
+    
+    .resume {
+        padding: 20mm;
+        max-width: none;
+        box-shadow: none;
+        border-radius: 0;
+        min-height: 297mm;
+    }
+
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    #printButton {
+        display: none !important;
+    }
+
+    /* 페이지 번호 스타일 */
+    .page-number {
+        position: running(pageNumber);
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--secondary-color);
+    }
+
+    @page {
+        @bottom-center {
+            content: counter(page);
+        }
+    }
+
+    /* 새 페이지 시작 시 여백 조정 */
+    .page-break + section {
+        margin-top: 2rem;
+    }
+
+    /* 인쇄 시 호버 효과 제거 */
+    .job:hover,
+    .contact-info p:hover,
+    section:hover h2::after {
+        transform: none;
+    }
+} 
