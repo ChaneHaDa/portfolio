@@ -1,0 +1,17 @@
+@media print {
+    /* 불필요한 요소 숨기기 */
+    header, footer, nav { display: none !important; }
+    body { margin: 1cm; font-size: 12pt; line-height: 1.4; }
+    a::after { content: ""; } /* 링크 URL 표시 방지 */
+  
+    /* 페이지 분할 */
+    .page-break { page-break-after: always; }
+  
+    /* 한글 WebFont 임베딩 (예: 나눔고딕) */
+    @font-face {
+      font-family: 'NanumGothic';
+      src: url('/assets/fonts/NanumGothic.woff2') format('woff2');
+    }
+    body { font-family: 'NanumGothic', sans-serif; }
+  }
+  

@@ -1,0 +1,30 @@
+name: Build & Generate PDF
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with: { node-version: '16' }
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build site
+        run: bundle install && bundle exec jekyll build
+
+      - name: Generate PDF
+        run: npm run generate-pdf
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: resume-pdf
+          path: resume.pdf
