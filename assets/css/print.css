@@ -1,17 +1,104 @@
 @media print {
-    /* 불필요한 요소 숨기기 */
-    header, footer, nav { display: none !important; }
-    body { margin: 1cm; font-size: 12pt; line-height: 1.4; }
-    a::after { content: ""; } /* 링크 URL 표시 방지 */
-  
-    /* 페이지 분할 */
-    .page-break { page-break-after: always; }
-  
-    /* 한글 WebFont 임베딩 (예: 나눔고딕) */
-    @font-face {
-      font-family: 'NanumGothic';
-      src: url('/assets/fonts/NanumGothic.woff2') format('woff2');
+    /* 기본 설정 */
+    body {
+        margin: 0;
+        padding: 20mm;
+        font-size: 11pt;
+        line-height: 1.5;
+        color: #333;
+        font-family: 'NanumGothic', 'Noto Sans KR', sans-serif;
     }
-    body { font-family: 'NanumGothic', sans-serif; }
-  }
+
+    /* 불필요한 요소 숨기기 */
+    header, footer, nav { 
+        display: none !important; 
+    }
+
+    /* 링크 스타일 */
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+    a::after { 
+        content: ""; 
+    }
+
+    /* 이력서 레이아웃 */
+    .resume {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    /* 제목 스타일 */
+    h1 {
+        font-size: 24pt;
+        margin-bottom: 10mm;
+        color: #2c3e50;
+    }
+
+    h2 {
+        font-size: 16pt;
+        margin-top: 8mm;
+        margin-bottom: 4mm;
+        color: #2c3e50;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 2mm;
+    }
+
+    h3 {
+        font-size: 14pt;
+        margin-top: 6mm;
+        margin-bottom: 3mm;
+        color: #34495e;
+    }
+
+    h4 {
+        font-size: 12pt;
+        margin-top: 4mm;
+        margin-bottom: 2mm;
+        color: #34495e;
+    }
+
+    /* 목록 스타일 */
+    ul, ol {
+        margin: 2mm 0;
+        padding-left: 6mm;
+    }
+
+    li {
+        margin: 1mm 0;
+    }
+
+    /* 강조 텍스트 */
+    strong {
+        color: #2c3e50;
+    }
+
+    /* 구분선 */
+    hr {
+        border: none;
+        border-top: 1px solid #eee;
+        margin: 4mm 0;
+    }
+
+    /* 페이지 나누기 */
+    .page-break {
+        page-break-after: always;
+    }
+
+    /* 한글 폰트 */
+    @font-face {
+        font-family: 'NanumGothic';
+        src: url('/assets/fonts/NanumGothic.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'NanumGothic';
+        src: url('/assets/fonts/NanumGothicBold.woff2') format('woff2');
+        font-weight: bold;
+        font-style: normal;
+    }
+}
   
